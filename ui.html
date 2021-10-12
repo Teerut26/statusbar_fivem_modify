@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="da-DK">
+  <head>
+    <meta charset="utf-8" />
+    <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.15.3/css/all.css"
+    />
+
+    <!-- CSS only -->
+
+    <link rel="stylesheet" href="ui.css" type="text/css" />
+    <script src="ui.js" type="text/javascript"></script>
+    <script>
+      $(function () {
+        var $debug = $("#debug");
+        var $heal = $("#heal");
+        var $box = $("#box");
+        var $boxArmor = $("#boxArmor");
+
+        window.addEventListener("message", function (event) {
+          $box.css("width", event.data.heal - 100 + "%");
+          $boxArmor.css("width", event.data.armor + "%");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div style="overflow: hidden !important" class="w-full h-screen">
+      <div class="top-0 left-0 text-light" id="ping_text">99 ms</div>
+      <div
+        style="overflow: hidden !important"
+        class="
+          fixed
+          bottom-20
+          right-3
+          flex flex-col
+          gap-1
+          w-44
+          transform
+          rotate-3
+        "
+      >
+        <div class="progress w-full relative">
+          <div
+            id="heal_progress"
+            class="progress-bar progress-bar-striped progress-bar-animated w-10"
+            role="progressbar"
+            style="width: 100%; background-color: #229b00;"
+            aria-valuenow="0"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+          <div class="absolute px-1 text-light flex">
+            <div class="flex align-items-center gap-1 ">
+              <i class="fas fa-heartbeat"></i>
+              <div id="heal_text">100 %</div>
+            </div>
+          </div>
+          <div class="absolute right-2 text-light flex">
+            <div class="flex align-items-center gap-1 ">
+              <div>ID : </div>
+              <div id="id_text" >999</div>
+             
+            </div>
+          </div>
+        </div>
+        <div class="progress w-full relative">
+          <div
+            id="armor_progress"
+            class="progress-bar progress-bar-striped progress-bar-animated w-10"
+            role="progressbar"
+            style="width: 100%; background-color: #0036ca;"
+            aria-valuenow="0"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+          <div class="absolute px-1 text-light flex align-items-center gap-1">
+            <i class="fa fa-shield-alt"></i>
+            <div id="armor_text">100 %</div>
+          </div>
+          <div class="absolute right-2 text-light flex">
+            <div class="flex align-items-center gap-1 ">
+              <div>Phone : </div>
+              <div id="phone_text"></div>
+             
+            </div>
+          </div>
+        </div>
+
+        <div class="flex gap-1">
+          <div class="progress w-full relative">
+            <div
+              id="food_progress"
+              
+              class="
+                progress-bar progress-bar-striped progress-bar-animated
+                w-10
+              "
+              role="progressbar"
+              style="width: 100%; background-color: #ca9400;"
+              aria-valuenow="0"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+            <div class="absolute px-1 text-light flex align-items-center gap-1">
+              <i class="fa fa-meat"></i>
+              <div id="food_text">100 %</div>
+            </div>
+          </div>
+          <div class="progress w-full relative">
+            <div
+              id="water_progress"
+              class="
+                progress-bar progress-bar-striped progress-bar-animated
+                w-10
+              "
+              role="progressbar"
+              style="width: 100%; background-color: #00a5c6;"
+              aria-valuenow="0"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+            <div class="absolute px-1 text-light flex align-items-center gap-1">
+              <i class="fa fa-tint"></i>
+              <div id="water_text">100 %</div>
+            </div>
+          </div>
+          <div class="progress w-full relative">
+            <div
+              id="dive_progress"
+              class="
+                progress-bar progress-bar-striped progress-bar-animated
+                w-10
+              "
+              role="progressbar"
+              style="width: 100%; background-color: #5e5e5e;"
+              aria-valuenow="0"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+            <div class="absolute px-1 text-light flex align-items-center gap-1">
+              <!-- <i class="fa fa-swimmer"></i> -->
+              <div class="font-extrabold">O<sub>2</sub></div>
+              <div id="dive_text">100 %</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
